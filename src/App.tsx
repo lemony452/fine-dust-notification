@@ -10,7 +10,7 @@ interface MyLocation {
   pm10Grade: number,
   pm25Grade: number,
 }
-
+let dumy = 1;
 function App() {
 
   let [sido, setSido] = useState<string>('서울');
