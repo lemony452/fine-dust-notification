@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
 import Main from './routes/main';
+import NavigationTap from './components/NavigationTap';
+import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 
 function App() {
+
+  const navigate = useNavigate();
 
   if (localStorage.getItem('sido') === null) {
     localStorage.setItem('sido', '서울');
@@ -18,9 +21,21 @@ function App() {
   // let [totalData, setTotal] = useState<object[] | null>();
   // let [myLocation, setMyLocation] = useState<MyLocation | null>();
 
+  let [tabNum, setTabNum] = useState<number>(0);
+
   return (
     <div className="App">
-      <Main sido={sido} station={station} setSido={setSido} setStaion={setStation}></Main>
+      <Routes>
+        <Route path='/'
+          element={<Main sido={sido} station={station} setSido={setSido} setStaion={setStation} />}>
+        </Route>
+        <Route path='/all' element={ <div>모든 지역 정보</div> }></Route>
+        <Route path='/bookmark' element={ <div>즐겨찾기</div> }></Route>
+      </Routes>
+
+      <div>
+        <NavigationTap tabNum={tabNum} setTabNum={setTabNum} />
+      </div>
     </div>
   );
 }
