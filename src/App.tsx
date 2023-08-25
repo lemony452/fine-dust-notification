@@ -5,6 +5,7 @@ import axios from 'axios';
 import Main from './routes/main';
 import NavigationTap from './components/NavigationTap';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
+import Card from './components/Card';
 
 function App() {
 
@@ -24,12 +25,12 @@ function App() {
   let [tabNum, setTabNum] = useState<number>(0);
 
   return (
-    <div className="App">
+    <div className="App p-9 h-[40rem] overflow-auto">
       <Routes>
         <Route path='/'
           element={<Main sido={sido} station={station} setSido={setSido} setStaion={setStation} />}>
         </Route>
-        <Route path='/all' element={ <div>모든 지역 정보</div> }></Route>
+        <Route path='/all' element={ <div><Card></Card></div> }></Route>
         <Route path='/bookmark' element={ <div>즐겨찾기</div> }></Route>
       </Routes>
 
