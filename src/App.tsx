@@ -25,16 +25,18 @@ function App() {
   let [tabNum, setTabNum] = useState<number>(0);
 
   return (
-    <div className="App p-9 h-[40rem] overflow-auto">
-      <Routes>
-        <Route path='/'
-          element={<Main sido={sido} station={station} setSido={setSido} setStaion={setStation} />}>
-        </Route>
-        <Route path='/all' element={ <div><Card></Card></div> }></Route>
-        <Route path='/bookmark' element={ <div>즐겨찾기</div> }></Route>
-      </Routes>
-
-      <div>
+    <div className="App relative w-128 p-5 h-[50rem] bg-white rounded-xl">
+      <h2 className='text-2xl font-bold text-center text-gray-700 mb-5'>오늘의 미세먼지</h2>
+      <div className='flex justify-center overflow-auto w-full p-5'>
+        <Routes>
+          <Route path='/'
+            element={<Main sido={sido} station={station} setSido={setSido} setStaion={setStation} />}>
+          </Route>
+          <Route path='/all' element={ <div><Card></Card></div> }></Route>
+          <Route path='/bookmark' element={ <div>즐겨찾기</div> }></Route>
+        </Routes>
+      </div>
+      <div className='absolute fixed left-0 bottom-0 w-full'>
         <NavigationTap tabNum={tabNum} setTabNum={setTabNum} />
       </div>
     </div>
