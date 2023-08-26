@@ -11,7 +11,7 @@ function Card() {
   }
 
   return (
-    <div className="block p-5 max-w-sm rounded-lg border border-gray-200 shadow-md mb-4 mx-auto bg-blue-400">
+    <div className="block p-5 w-[26rem] rounded-lg border border-gray-200 shadow-md mb-4 mx-auto bg-blue-400">
       <div className="mb-5 flex items-center justify-between">
         <div className='items-end'>
           <span className="text-2xl font-bold text-gray-800 pr-1">중구</span>
