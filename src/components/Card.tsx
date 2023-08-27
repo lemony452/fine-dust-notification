@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { BsBookmarkFill, BsBookmark } from 'react-icons/bs'
 import { SelctLocationData } from '../utils/utils';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, addLocation, removeLocation, LocationType } from '../store';
 
 interface PropsType {
   sido: string,
@@ -8,6 +10,11 @@ interface PropsType {
 }
 
 function Card({ sido, dustData }: PropsType ) {
+
+  // let bookmarkList = JSON.parse(localStorage.getItem('bookmarkList')!);
+  let bookmarkList = useSelector((state: RootState) => state.bookmark);
+  console.log(bookmarkList);
+  const dispatch = useDispatch();
 
   let value: SelctLocationData = {
     stationName: dustData.stationName,
@@ -18,10 +25,24 @@ function Card({ sido, dustData }: PropsType ) {
     pm25Grade: Number(dustData.pm25Grade),
   }
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  console.log(sido, value.stationName);
+
+  let flag = false;
+  for (let i=0; i<bookmarkList.length; i++) {
+    if (bookmarkList[i].sidoN === sido && bookmarkList[i].stationN === value.stationName) {
+      flag = true;
+      break
+    }
+  }
+  
+  let [isFavorite, setIsFavorite] = useState(flag);
+  
 
   const clickFavorite = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
+    console.log('-----------')
+    if (isFavorite === true) dispatch(removeLocation({ sidoN: sido, stationN: value.stationName }));
+    else dispatch(addLocation({ sidoN: sido, stationN: value.stationName }));
     setIsFavorite(!isFavorite);
   }
 
