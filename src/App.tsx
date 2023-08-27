@@ -16,6 +16,7 @@ function App() {
     localStorage.setItem('sido', '서울');
     localStorage.setItem('station', '중구');
     localStorage.setItem('stationList', JSON.stringify( [] ));
+    localStorage.setItem('bookmarkList', JSON.stringify( [] ));
   }
 
   let [sido, setSido] = useState<string>(localStorage.getItem('sido')!);
