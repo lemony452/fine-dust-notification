@@ -1,6 +1,7 @@
 import React, { useEffect, Dispatch, SetStateAction} from 'react';
 import { GetDustData, sidoList } from "../utils/getDustData"
 import { FaRegFaceLaughSquint, FaRegFaceSmile, FaRegFaceMeh, FaRegFaceFrown, FaRegFaceTired } from 'react-icons/fa6';
+import { SelctLocationData } from '../utils/utils';
 
 interface PropsType {
   sido: string,
@@ -9,20 +10,11 @@ interface PropsType {
   setStaion: Dispatch<SetStateAction<string>>,
 }
 
-export interface MyLocation {
-  stationName: string,
-  dataTime: string,
-  pm10Value: number | null,
-  pm10Grade: number | null,
-  pm25Value: number | null,
-  pm25Grade: number | null,
-}
-
 function Main({ sido, station, setSido, setStaion }: PropsType) {
   
   let res = GetDustData(sido); // 각 station 미세먼지 정보들이 배열에 담겨있음
   
-  let myLocation: MyLocation = {
+  let myLocation: SelctLocationData = {
     stationName: '',
     dataTime: '',
     pm10Grade: 0,
@@ -34,7 +26,7 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
   // 선택한 시/도별 station 리스트 가져오기
   if (res.data !== undefined || null) {
     let stationList: string[] = [];
-    res.data.forEach((value: MyLocation) => {
+    res.data.forEach((value: SelctLocationData) => {
       stationList.push(value.stationName);
     })
     if (stationList.indexOf(station) === -1) {
@@ -42,15 +34,15 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
     }
     localStorage.setItem('stationList', JSON.stringify(stationList));
 
-    let myValue = res.data.find((val: MyLocation)=>val.stationName === localStorage.getItem('station'));
+    let myValue = res.data.find((val: SelctLocationData)=>val.stationName === localStorage.getItem('station'));
       // console.log(myLocation);
       myLocation = {
         stationName: myValue.stationName,
         dataTime: myValue.dataTime,
-        pm10Grade: myValue.pm10Grade,
-        pm10Value: myValue.pm10Value,
-        pm25Grade: myValue.pm25Grade,
-        pm25Value: myValue.pm25Value,
+        pm10Grade: Number(myValue.pm10Grade),
+        pm10Value: Number(myValue.pm10Value),
+        pm25Grade: Number(myValue.pm25Grade),
+        pm25Value: Number(myValue.pm25Value),
       }
     }
 
@@ -121,7 +113,7 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
             </div> : null
           }
           { Math.max(myLocation.pm10Grade!, myLocation.pm25Grade!) === 2 ?
-            <div className='flex flex-col p-10 w-[26rem] h-[30rem] rounded-lg border border-gray-200 bg-blue-400 shadow-md'>
+            <div className='flex flex-col p-10 w-[26rem] h-[30rem] rounded-lg border border-gray-200 bg-emerald-400 shadow-md'>
               <FaRegFaceSmile size={180} color='white' />
               <p>보통</p>
               <table table-fixed>
@@ -138,7 +130,7 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
             </div> : null
           }
           { Math.max(myLocation.pm10Grade!, myLocation.pm25Grade!) === 3 ?
-            <div className='flex flex-col p-10 w-[26rem] h-[30rem] rounded-lg border border-gray-200 bg-blue-400 shadow-md'>
+            <div className='flex flex-col p-10 w-[26rem] h-[30rem] rounded-lg border border-gray-200 bg-amber-400 shadow-md'>
               <FaRegFaceMeh size={180} color='white' />
               <p>한때 나쁨</p>
               <table table-fixed>
@@ -155,7 +147,7 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
             </div> : null
           }
           { Math.max(myLocation.pm10Grade!, myLocation.pm25Grade!) === 4 ?
-            <div className='flex flex-col p-10 w-[26rem] h-[30rem] rounded-lg border border-gray-200 bg-blue-400 shadow-md'>
+            <div className='flex flex-col p-10 w-[26rem] h-[30rem] rounded-lg border border-gray-200 bg-orange-400 shadow-md'>
               <FaRegFaceFrown size={180} color='white' />
               <p>나쁨</p>
               <table table-fixed>
@@ -172,7 +164,7 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
             </div> : null
           }
           { Math.max(myLocation.pm10Grade!, myLocation.pm25Grade!) === 5 ?
-            <div className='flex flex-col p-10 w-[26rem] h-[30rem] rounded-lg border border-gray-200 bg-blue-400 shadow-md'>
+            <div className='flex flex-col p-10 w-[26rem] h-[30rem] rounded-lg border border-gray-200 bg-red-400 shadow-md'>
               <FaRegFaceTired size={180} color='white' />
               <p>매우 나쁨</p>
               <table table-fixed>
