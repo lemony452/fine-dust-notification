@@ -5,7 +5,7 @@ import axios from 'axios';
 import Main from './routes/main';
 import NavigationTap from './components/NavigationTap';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
-import Card from './components/Card';
+import All from './routes/All';
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
           <Route path='/'
             element={<Main sido={sido} station={station} setSido={setSido} setStaion={setStation} />}>
           </Route>
-          <Route path='/all' element={ <div><Card></Card></div> }></Route>
+          <Route path='/all' element={ <All /> }></Route>
           <Route path='/bookmark' element={ <div>즐겨찾기</div> }></Route>
         </Routes>
       </div>
