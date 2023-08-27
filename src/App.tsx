@@ -6,6 +6,7 @@ import Main from './routes/main';
 import NavigationTap from './components/NavigationTap';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 import All from './routes/All';
+import Bookmark from './routes/Bookmark';
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
             element={<Main sido={sido} station={station} setSido={setSido} setStaion={setStation} />}>
           </Route>
           <Route path='/all' element={ <All /> }></Route>
-          <Route path='/bookmark' element={ <div>즐겨찾기</div> }></Route>
+          <Route path='/bookmark' element={ <Bookmark /> }></Route>
         </Routes>
       </div>
       <div className='absolute fixed left-0 bottom-0 w-full'>
