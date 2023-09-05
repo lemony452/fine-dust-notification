@@ -3,8 +3,12 @@ import { GetDustData, sidoList } from "../utils/getDustData";
 import { SelctLocationData } from '../utils/utils';
 import Card from '../components/Card';
 import './All.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 function All() {
+
+  const bookmarkList = useSelector((state: RootState) => state.bookmark);
 
   let [sido, selectSido] = useState('서울');
 
@@ -33,7 +37,7 @@ function All() {
       { res.isError && 'Error!' }
       <div className='scroll-custom overflow-auto'>
         { res && (res.data === undefined || res.data === null) ? '새로고침 해주세요!'
-        : res.data.map((dustData: SelctLocationData, idx: number) => <Card key={idx} sido={sido} dustData={dustData} />) }
+        : res.data.map((dustData: SelctLocationData, idx: number) => <Card key={idx} sido={sido} dustData={dustData} bookmarkList={bookmarkList} />) }
       </div>
     </div>
   )
