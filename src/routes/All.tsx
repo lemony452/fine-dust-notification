@@ -5,6 +5,7 @@ import Card from '../components/Card';
 import './All.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import Loading from '../components/Loading';
 
 function All() {
 
@@ -20,7 +21,7 @@ function All() {
   }
 
   return (
-    <div className='flex flex-col items-center h-[40rem]'>
+    <div className='flex flex-col items-center gap-5'>
       <div className="w-20 mr-5">
         <label htmlFor="underline_select" className="sr-only">Underline select</label>
         <select onChange={clickSido} id="underline_select"
@@ -33,9 +34,9 @@ function All() {
             } 
         </select>
       </div>
-      { res.isLoading && '로딩중' }
+      { res.isLoading && <Loading /> }
       { res.isError && 'Error!' }
-      <div className='scroll-custom overflow-auto'>
+      <div className='scroll-custom overflow-auto h-[32rem]'>
         { res && (res.data === undefined || res.data === null) ? '새로고침 해주세요!'
         : res.data.map((dustData: SelctLocationData, idx: number) => <Card key={idx} sido={sido} dustData={dustData} bookmarkList={bookmarkList} />) }
       </div>

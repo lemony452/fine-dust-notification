@@ -4,6 +4,7 @@ import { RootState, removeLocation, LocationType } from "../store";
 import { GetDustData, GetFavoriteDustData } from "../utils/getDustData";
 import { SelctLocationData } from '../utils/utils';
 import Card from "../components/Card";
+import Loading from "../components/Loading";
 
 interface DataType extends SelctLocationData {
   sidoName: string
@@ -20,7 +21,14 @@ function Bookmark() {
   
   // const { isLoading, isError, data } = GetDustData('전국');
   
-  if (bookmarkList.length === 0) return (<div>즐겨찾는 지역을 추가해주세요!</div>)
+  if (bookmarkList.length === 0) {
+    console.log(bookmarkList);
+    return (
+    <div className="py-2.5 px-1 w-full text-center text-lg text-gray-800 font-bold bg-transparent border-0 border-b-2 border-gray-200">
+      즐겨찾는 지역을 추가해주세요!
+    </div>
+    )
+  }
   else {
     let res: DataType[] = [];
     const getData = GetFavoriteDustData(bookmarkList);
@@ -55,8 +63,8 @@ function Bookmark() {
     // }
     console.log(res);
     return (
-      <div>
-        { isLoading && '로딩중' }
+      <div className='scroll-custom overflow-auto h-[36rem]'>
+        { isLoading && <Loading /> }
         { isError && 'Error!' }
         { res.length > 0 &&
           res.map((value: DataType, idx: number) => <Card key={idx} sido={value.sidoName} dustData={value} bookmarkList={bookmarkList}></Card>) }

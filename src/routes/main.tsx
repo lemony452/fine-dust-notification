@@ -2,6 +2,7 @@ import React, { useEffect, Dispatch, SetStateAction} from 'react';
 import { GetDustData, sidoList } from "../utils/getDustData"
 import { FaRegFaceLaughSquint, FaRegFaceSmile, FaRegFaceMeh, FaRegFaceFrown, FaRegFaceTired } from 'react-icons/fa6';
 import { SelctLocationData } from '../utils/utils';
+import Loading from '../components/Loading';
 
 interface PropsType {
   sido: string,
@@ -89,7 +90,7 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
           </select>
         </div>
       </div>
-      { res.isLoading && '로딩중' }
+      { res.isLoading && <Loading /> }
       { res.isError && 'Error!' }
       { res &&
         <div className='flex justify-center pt-5 relative'>
