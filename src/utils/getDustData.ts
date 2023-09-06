@@ -1,5 +1,11 @@
 import axios from "axios"
-import { useQuery } from "@tanstack/react-query"
+import { useQueries, useQuery } from "@tanstack/react-query"
+import { LocationType } from "../store";
+import { SelctLocationData } from "./utils";
+
+interface DataType extends SelctLocationData {
+  sidoName: string
+}
 
 export const getParameters = {
   serviceKey: 'lJQ0dBOKselim2fwpYeH+Ae1AXPRFKgE4e4GjvD2pycb7zgC9uvk31+Sb8DpzZuSJ4hHaBmubhGEID2dHrFVBg==',
@@ -22,7 +28,32 @@ export function GetDustData(sido : string) {
     }
   });
 
-  console.log(dustData.data);
+  // console.log(dustData.data);
 
   return dustData
+}
+
+export function GetFavoriteDustData(bookmarkList: LocationType[]) {
+  console.log('bookmarkList', bookmarkList);
+  let allDustData = useQueries({
+    queries: bookmarkList.map((location: LocationType, idx: number) => {
+      // console.log('idx', idx);
+      return {
+        queryKey: ['getAllData', location.sidoN],
+        queryFn: () => {
+          return axios.get('http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
+            {params: {...getParameters, sidoName: location.sidoN}}
+          ).then((res) => {
+            const dataList = res.data.response.body.items;
+            const found = dataList.find((dustData: DataType) => dustData.sidoName === location.sidoN && dustData.stationName === location.stationN )
+            console.log(idx, '번째 queries문')
+            console.log(location, found);
+            return found
+          })
+        },
+      }
+    })
+  })
+  console.log('res', allDustData);
+  return allDustData
 }
