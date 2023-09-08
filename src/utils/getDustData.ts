@@ -1,14 +1,11 @@
 import axios from "axios"
 import { useQueries, useQuery } from "@tanstack/react-query"
 import { LocationType } from "../store";
-import { SelctLocationData } from "./utils";
 
-interface DataType extends SelctLocationData {
-  sidoName: string
-}
+const REQUEST_URL = process.env.REACT_APP_API_URL + '/' + process.env.REACT_APP_KEY;
 
 export const getParameters = {
-  serviceKey: 'lJQ0dBOKselim2fwpYeH+Ae1AXPRFKgE4e4GjvD2pycb7zgC9uvk31+Sb8DpzZuSJ4hHaBmubhGEID2dHrFVBg==',
+  serviceKey: process.env.REACT_APP_SERVICE_KEY,
   returnType: 'json',
   numOfRows: '100',
   pageNo: '1',
@@ -22,13 +19,11 @@ export function GetDustData(sido : string) {
   let dustData = useQuery({
     queryKey: ['getData', sido],
     queryFn: () => {
-      return axios.get('http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
+      return axios.get(REQUEST_URL,
         {params: {...getParameters, sidoName: sido}}
       ).then((res) => res.data.response.body.items)
     }
   });
-
-  // console.log(dustData.data);
 
   return dustData
 }
@@ -36,18 +31,17 @@ export function GetDustData(sido : string) {
 export function GetFavoriteDustData(bookmarkList: LocationType[]) {
   console.log('bookmarkList', bookmarkList);
   let allDustData = useQueries({
-    queries: bookmarkList.map((location: LocationType, idx: number) => {
-      // console.log('idx', idx);
+    queries: bookmarkList.map((location: LocationType) => {
       return {
         queryKey: ['getAllData', location.sidoN],
         queryFn: () => {
-          return axios.get('http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
+          return axios.get(REQUEST_URL,
             {params: {...getParameters, sidoName: location.sidoN}}
           ).then((res) => res.data.response.body.items)
         },
       }
     })
   })
-  console.log('res', allDustData);
+
   return allDustData
 }
