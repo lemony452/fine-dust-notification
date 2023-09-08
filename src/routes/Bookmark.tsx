@@ -13,64 +13,30 @@ interface DataType extends SelctLocationData {
 function Bookmark() {
 
   const bookmarkList = useSelector((state: RootState) => state.bookmark)
-  console.log(bookmarkList)
-
-  // let allDustData = GetFavoriteDustData(bookmarkList);
-
-  // --------------------------------------------------
   
-  // const { isLoading, isError, data } = GetDustData('전국');
-  
-  if (bookmarkList.length === 0) {
-    console.log(bookmarkList);
-    return (
-    <div className="py-2.5 px-1 w-full text-center text-lg text-gray-800 font-bold bg-transparent border-0 border-b-2 border-gray-200">
-      즐겨찾는 지역을 추가해주세요!
-    </div>
-    )
-  }
-  else {
-    let res: DataType[] = [];
+    let res: any[] = [];
     const getData = GetFavoriteDustData(bookmarkList);
     const isLoading  = getData.some((res) => res.isLoading);
     const isError = getData.some((res) => res.isError);
     console.log(getData);
     if (!isLoading && !isError) {
-      res = getData.map((value) => value.data)
+      const allDustData = getData.reduce((acc, cur) => acc.concat(cur.data), []);
+      res = bookmarkList.map((location) => allDustData.find((data: DataType) => data.sidoName === location.sidoN && data.stationName === location.stationN))
     }
 
-    // if (data !== null && data !== undefined) {
-    //   console.log(data);
-    //   res = [];
-    //   bookmarkList.forEach((location: LocationType) => {
-    //     console.log(location);
-    //     const found = data.find((dustData: DataType) => {
-    //       // console.log(dustData);
-    //       // console.log(dustData.sidoName === location.sidoN);
-    //       // console.log(dustData.stationName === location.stationN);
-    //       return dustData.sidoName === location.sidoN && dustData.stationName === location.stationN
-    //     });
-    //     console.log(found);
-    //     res.push(found);
-    //   })
-    //   // for (let i=0; i<bookmarkList.length; i++) {
-    //   //   for (let j=0; j<data.length; j++) {
-    //   //     if (bookmarkList[i].sidoN === data[j].sidoName && bookmarkList[i].stationN === data[j].stationName) {
-    //   //       res.push(data[j]);
-    //   //     }
-    //   //   }
-    //   // }
-    // }
-    console.log(res);
-    return (
-      <div className='scroll-custom overflow-auto h-[36rem]'>
-        { isLoading && <Loading /> }
-        { isError && 'Error!' }
-        { res.length > 0 &&
-          res.map((value: DataType, idx: number) => <Card key={idx} sido={value.sidoName} dustData={value} bookmarkList={bookmarkList}></Card>) }
-      </div>
-    )
-  }
+  return (
+    <div className='scroll-custom overflow-auto h-[36rem]'>
+      { res.length === 0 && !isLoading && !isError &&
+        <div className="py-2.5 px-1 w-full text-center text-lg text-gray-800 font-bold bg-transparent border-0 border-b-2 border-gray-200">
+          즐겨찾는 지역을 추가해주세요!
+        </div>
+      }
+      { isLoading && <Loading /> }
+      { isError && 'Error!' }
+      { res.length > 0 &&
+        res.map((value: DataType, idx: number) => <Card key={idx} sido={value.sidoName} dustData={value} bookmarkList={bookmarkList}></Card>) }
+    </div>
+  )
 }
 
 export default Bookmark
