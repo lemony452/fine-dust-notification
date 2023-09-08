@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 body {
-  background: #6495ED;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #6495ED;
 }
