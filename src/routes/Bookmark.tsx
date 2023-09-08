@@ -5,6 +5,7 @@ import { GetDustData, GetFavoriteDustData } from "../utils/getDustData";
 import { SelctLocationData } from '../utils/utils';
 import Card from "../components/Card";
 import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 interface DataType extends SelctLocationData {
   sidoName: string
@@ -32,7 +33,7 @@ function Bookmark() {
         </div>
       }
       { isLoading && <Loading /> }
-      { isError && 'Error!' }
+      { isError && <Error /> }
       { res.length > 0 &&
         res.map((value: DataType, idx: number) => <Card key={idx} sido={value.sidoName} dustData={value} bookmarkList={bookmarkList}></Card>) }
     </div>

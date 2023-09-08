@@ -3,6 +3,7 @@ import { GetDustData, sidoList } from "../utils/getDustData"
 import { FaRegFaceLaughSquint, FaRegFaceSmile, FaRegFaceMeh, FaRegFaceFrown, FaRegFaceTired } from 'react-icons/fa6';
 import { SelctLocationData } from '../utils/utils';
 import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 interface PropsType {
   sido: string,
@@ -91,7 +92,7 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
         </div>
       </div>
       { res.isLoading && <Loading /> }
-      { res.isError && 'Error!' }
+      { res.isError && <Error /> }
       { res &&
         <div className='flex justify-center pt-5 relative'>
           { myLocation.pm10Grade === null && <div>알수없음</div>}

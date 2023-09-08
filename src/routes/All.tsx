@@ -6,6 +6,7 @@ import './All.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 function All() {
 
@@ -35,7 +36,7 @@ function All() {
         </select>
       </div>
       { res.isLoading && <Loading /> }
-      { res.isError && 'Error!' }
+      { res.isError && <Error /> }
       <div className='scroll-custom overflow-auto h-[32rem]'>
         { res && (res.data === undefined || res.data === null) ? '새로고침 해주세요!'
         : res.data.map((dustData: SelctLocationData, idx: number) => <Card key={idx} sido={sido} dustData={dustData} bookmarkList={bookmarkList} />) }
