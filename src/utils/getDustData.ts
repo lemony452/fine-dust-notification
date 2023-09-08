@@ -43,13 +43,7 @@ export function GetFavoriteDustData(bookmarkList: LocationType[]) {
         queryFn: () => {
           return axios.get('http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
             {params: {...getParameters, sidoName: location.sidoN}}
-          ).then((res) => {
-            const dataList = res.data.response.body.items;
-            const found = dataList.find((dustData: DataType) => dustData.sidoName === location.sidoN && dustData.stationName === location.stationN )
-            console.log(idx, '번째 queries문')
-            console.log(location, found);
-            return found
-          })
+          ).then((res) => res.data.response.body.items)
         },
       }
     })
