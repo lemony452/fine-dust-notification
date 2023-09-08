@@ -1,8 +1,7 @@
-import { useEffect, useMemo } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, removeLocation, LocationType } from "../store";
-import { GetDustData, GetFavoriteDustData } from "../utils/getDustData";
+import { RootState } from "../store";
+import { useSelector } from "react-redux";
 import { SelctLocationData } from '../utils/utils';
+import { GetFavoriteDustData } from "../utils/getDustData";
 import Card from "../components/Card";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
@@ -19,7 +18,7 @@ function Bookmark() {
     const getData = GetFavoriteDustData(bookmarkList);
     const isLoading  = getData.some((res) => res.isLoading);
     const isError = getData.some((res) => res.isError);
-    console.log(getData);
+    
     if (!isLoading && !isError) {
       const allDustData = getData.reduce((acc, cur) => acc.concat(cur.data), []);
       res = bookmarkList.map((location) => allDustData.find((data: DataType) => data.sidoName === location.sidoN && data.stationName === location.stationN))

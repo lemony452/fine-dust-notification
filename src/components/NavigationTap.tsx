@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoLocationOutline, IoMapOutline } from 'react-icons/io5';
-import { BsBookmarkFill, BsBookmark } from 'react-icons/bs'
+import { BsBookmark } from 'react-icons/bs'
 
 interface TabProps {
   tabNum: number,

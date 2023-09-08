@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { GetDustData, sidoList } from "../utils/getDustData";
-import { SelctLocationData } from '../utils/utils';
-import Card from '../components/Card';
-import './All.css';
-import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import { useSelector } from 'react-redux';
+import { SelctLocationData } from '../utils/utils';
+import { GetDustData, sidoList } from "../utils/getDustData";
+import Card from '../components/Card';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
+import '../App.css';
 
 function All() {
 

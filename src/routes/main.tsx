@@ -1,7 +1,7 @@
 import React, { useEffect, Dispatch, SetStateAction} from 'react';
+import { SelctLocationData } from '../utils/utils';
 import { GetDustData, sidoList } from "../utils/getDustData"
 import { FaRegFaceLaughSquint, FaRegFaceSmile, FaRegFaceMeh, FaRegFaceFrown, FaRegFaceTired } from 'react-icons/fa6';
-import { SelctLocationData } from '../utils/utils';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 
@@ -37,7 +37,6 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
     localStorage.setItem('stationList', JSON.stringify(stationList));
 
     let myValue = res.data.find((val: SelctLocationData)=>val.stationName === localStorage.getItem('station'));
-      // console.log(myLocation);
       myLocation = {
         stationName: myValue.stationName,
         dataTime: myValue.dataTime,

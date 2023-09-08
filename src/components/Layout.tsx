@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Outlet } from "react-router-dom";
 import NavigationTap from "./NavigationTap";
 
@@ -6,6 +6,7 @@ interface PropsType {
   tabNum: number,
   setTabNum: Dispatch<SetStateAction<number>>
 }
+
 function Layout({ tabNum, setTabNum }: PropsType) {
 
   return (
