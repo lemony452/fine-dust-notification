@@ -22,10 +22,10 @@ function App() {
   return (
     <div className="m-auto relative p-5 w-[512px] h-[700px] bg-white rounded-xl">
       <Routes>
-        <Route path='/' element={<Layout tabNum={tabNum} setTabNum={setTabNum} />}>
+        <Route path='/fine-dust-notification/' element={<Layout tabNum={tabNum} setTabNum={setTabNum} />}>
           <Route index element={<Main sido={sido} station={station} setSido={setSido} setStaion={setStation} />}></Route>
-          <Route path='/all' element={ <All /> }></Route>
-          <Route path='/bookmark' element={ <Bookmark /> }></Route>
+          <Route path='/fine-dust-notification/all' element={ <All /> }></Route>
+          <Route path='/fine-dust-notification/bookmark' element={ <Bookmark /> }></Route>
         </Route>
       </Routes>
     </div>
