@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/https//lemony452.github.io/fine-dust-notification/static/css/main.bbbe5f5f.css",
-    "main.js": "/https//lemony452.github.io/fine-dust-notification/static/js/main.c21e8f5b.js",
-    "static/js/787.3440fdca.chunk.js": "/https//lemony452.github.io/fine-dust-notification/static/js/787.3440fdca.chunk.js",
-    "index.html": "/https//lemony452.github.io/fine-dust-notification/index.html",
-    "main.bbbe5f5f.css.map": "/https//lemony452.github.io/fine-dust-notification/static/css/main.bbbe5f5f.css.map",
-    "main.c21e8f5b.js.map": "/https//lemony452.github.io/fine-dust-notification/static/js/main.c21e8f5b.js.map",
-    "787.3440fdca.chunk.js.map": "/https//lemony452.github.io/fine-dust-notification/static/js/787.3440fdca.chunk.js.map"
+    "main.css": "/fine-dust-notification/static/css/main.bbbe5f5f.css",
+    "main.js": "/fine-dust-notification/static/js/main.99c57a00.js",
+    "static/js/787.3440fdca.chunk.js": "/fine-dust-notification/static/js/787.3440fdca.chunk.js",
+    "index.html": "/fine-dust-notification/index.html",
+    "main.bbbe5f5f.css.map": "/fine-dust-notification/static/css/main.bbbe5f5f.css.map",
+    "main.99c57a00.js.map": "/fine-dust-notification/static/js/main.99c57a00.js.map",
+    "787.3440fdca.chunk.js.map": "/fine-dust-notification/static/js/787.3440fdca.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bbbe5f5f.css",
-    "static/js/main.c21e8f5b.js"
+    "static/js/main.99c57a00.js"
   ]
 }
