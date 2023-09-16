@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/fine-dust-notification/static/css/main.bbbe5f5f.css",
-    "main.js": "/fine-dust-notification/static/js/main.99c57a00.js",
+    "main.js": "/fine-dust-notification/static/js/main.9e73fe4a.js",
     "static/js/787.3440fdca.chunk.js": "/fine-dust-notification/static/js/787.3440fdca.chunk.js",
     "index.html": "/fine-dust-notification/index.html",
     "main.bbbe5f5f.css.map": "/fine-dust-notification/static/css/main.bbbe5f5f.css.map",
-    "main.99c57a00.js.map": "/fine-dust-notification/static/js/main.99c57a00.js.map",
+    "main.9e73fe4a.js.map": "/fine-dust-notification/static/js/main.9e73fe4a.js.map",
     "787.3440fdca.chunk.js.map": "/fine-dust-notification/static/js/787.3440fdca.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bbbe5f5f.css",
-    "static/js/main.99c57a00.js"
+    "static/js/main.9e73fe4a.js"
   ]
 }
