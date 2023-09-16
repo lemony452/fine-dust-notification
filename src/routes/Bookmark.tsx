@@ -25,7 +25,7 @@ function Bookmark() {
     }
 
   return (
-    <div className='scroll-custom overflow-auto h-[36rem]'>
+    <div className='scroll-custom overflow-auto h-full'>
       { res.length === 0 && !isLoading && !isError &&
         <div className="py-2.5 px-1 w-full text-center text-lg text-gray-800 font-bold bg-transparent border-0 border-b-2 border-gray-200">
           즐겨찾는 지역을 추가해주세요!
