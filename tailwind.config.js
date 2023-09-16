@@ -2,8 +2,18 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}",],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["Graphik", "sans-serif"],
+      serif: ["Merriweather", "serif"],
+    },
+    extend: {
+      spacing: {
+        '128': '32rem',
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin'),
+    "./node_modules/flowbite/**/*.js",
+  ],
 }
-
