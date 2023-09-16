@@ -20,7 +20,7 @@ function App() {
   let [tabNum, setTabNum] = useState<number>(0);
 
   return (
-    <div className="m-auto relative w-128 p-5 h-[50rem] bg-white rounded-xl">
+    <div className="m-auto relative p-5 w-[512px] h-[700px] bg-white rounded-xl">
       <Routes>
         <Route path='/' element={<Layout tabNum={tabNum} setTabNum={setTabNum} />}>
           <Route index element={<Main sido={sido} station={station} setSido={setSido} setStaion={setStation} />}></Route>
