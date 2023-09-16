@@ -33,28 +33,8 @@ function Card({ sido, dustData, bookmarkList }: PropsType ) {
     else dispatch(addLocation({ sidoN: sido, stationN: value.stationName }));
   }
 
-  if (value.dataTime === null) {
-    return (
-      <div className="block p-5 w-[26rem] rounded-lg border border-gray-200 shadow-md mb-4 mx-auto bg-gray-400">
-        <div className="mb-5 flex items-center justify-between">
-          <div className='items-end'>
-            <span className="text-2xl font-bold text-gray-800 pr-1">{ value.stationName }</span>
-            <span className="tracking-tight text-gray-700 font-bold">{ sido }</span>
-          </div>
-          <span onClick={clickFavorite}>
-            {
-              isFavorite ? <BsBookmarkFill size={22} className='text-white cursor-pointer' /> : <BsBookmark size={22} className='text-white cursor-pointer' />
-            }
-          </span>
-        </div>
-        <div className="text-center text-gray-700">
-          <p className="text-3xl text-white pb-5">알수없음</p>
-          <p className="text-end text-gray-700 invisible">알수없음</p>
-        </div>
-      </div>  
-    )
-  }
-  else if (Math.max(value.pm10Grade!, value.pm25Grade!) === 1) {
+  
+  if (Math.max(value.pm10Grade!, value.pm25Grade!) === 1) {
     return (
       <div className="block p-5 w-[26rem] rounded-lg border border-gray-200 shadow-md mb-4 mx-auto bg-blue-400">
         <div className="mb-5 flex items-center justify-between">
@@ -138,7 +118,7 @@ function Card({ sido, dustData, bookmarkList }: PropsType ) {
       </div>
     )
   }
-  else {
+  else if (Math.max(value.pm10Grade!, value.pm25Grade!) === 5) {
     return (
       <div className="block p-5 w-[26rem] rounded-lg border border-gray-200 shadow-md mb-4 mx-auto bg-red-400">
         <div className="mb-5 flex items-center justify-between">
@@ -157,6 +137,27 @@ function Card({ sido, dustData, bookmarkList }: PropsType ) {
           <p className="text-end text-gray-700">{ value.dataTime }</p>
         </div>
       </div>
+    )
+  }
+  else {
+    return (
+      <div className="block p-5 w-[26rem] rounded-lg border border-gray-200 shadow-md mb-4 mx-auto bg-gray-400">
+        <div className="mb-5 flex items-center justify-between">
+          <div className='items-end'>
+            <span className="text-2xl font-bold text-gray-800 pr-1">{ value.stationName }</span>
+            <span className="tracking-tight text-gray-700 font-bold">{ sido }</span>
+          </div>
+          <span onClick={clickFavorite}>
+            {
+              isFavorite ? <BsBookmarkFill size={22} className='text-white cursor-pointer' /> : <BsBookmark size={22} className='text-white cursor-pointer' />
+            }
+          </span>
+        </div>
+        <div className="text-center text-gray-700">
+          <p className="text-3xl text-white pb-5">알수없음</p>
+          <p className="text-end text-gray-700 invisible">알수없음</p>
+        </div>
+      </div>  
     )
   }
 }
