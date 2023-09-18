@@ -36,7 +36,7 @@ function Card({ sido, dustData, bookmarkList }: PropsType ) {
   
   if (Math.max(value.pm10Grade!, value.pm25Grade!) === 1) {
     return (
-      <div className="block p-5 w-[26rem] rounded-lg border border-gray-200 shadow-md mb-4 mx-auto bg-blue-400">
+      <div className="block p-5 w-full rounded-lg border border-gray-200 shadow-md mb-4 mx-auto bg-blue-400">
         <div className="mb-5 flex items-center justify-between">
           <div className='items-end'>
             <span className="text-2xl font-bold text-gray-800 pr-1">{ value.stationName }</span>
