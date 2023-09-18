@@ -29,7 +29,7 @@ export function GetDustData(sido : string) {
 }
 
 export function GetFavoriteDustData(bookmarkList: LocationType[]) {
-  console.log('bookmarkList', bookmarkList);
+  // console.log('bookmarkList', bookmarkList);
   let allDustData = useQueries({
     queries: bookmarkList.map((location: LocationType) => {
       return {

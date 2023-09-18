@@ -14,11 +14,11 @@ let bookmarkSlice = createSlice({
   reducers: {
     addLocation: (state, action: PayloadAction<LocationType>) => {
 
-      console.log('추가', current(state), action.payload);
+      // console.log('추가', current(state), action.payload);
       return state = [...current(state), action.payload];
     },
     removeLocation: (state, action: PayloadAction<LocationType>) => {
-      console.log('삭제', current(state));
+      // console.log('삭제', current(state));
       return state = current(state).filter((location) => !(location.sidoN === action.payload.sidoN && location.stationN === action.payload.stationN))
       
     }
