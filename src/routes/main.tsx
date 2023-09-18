@@ -62,7 +62,7 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
   }, [res.data])
 
   return (
-    <div className='flex flex-col w-full h-full'>
+    <div className='flex flex-col w-full h-full gap-5'>
       <div className="flex w-full gap-5">
         <div className="w-[40%]">
           <label htmlFor="underline_select" className="sr-only">Underline select</label>
@@ -92,8 +92,8 @@ function Main({ sido, station, setSido, setStaion }: PropsType) {
       </div>
       { res.isLoading && <Loading /> }
       { res.isError && <Error /> }
-      { res &&
-        <div className='flex justify-center pt-5 relative h-full'>
+      { res.isSuccess &&
+        <div className='flex justify-center relative h-full'>
         
           { myLocation.pm10Grade! === 0 && myLocation.pm25Grade! === 0 ?
             <div className='flex items-center justify-center flex-col p-10 w-full rounded-lg border border-gray-200 bg-gray-400 shadow-md'>
