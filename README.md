@@ -1,12 +1,8 @@
 # ⛅ 미세먼지 알림 서비스
 
-
-
 ### 🎉서비스 URL
 
 [오늘의 미세먼지](https://lemony452.github.io/fine-dust-notification/)
-
-
 
 ### 1. 어플리케이션 소개
 
@@ -37,3 +33,8 @@
 - Tailwind
 
 ### 5. 어플리케이션 화면
+
+<p align="center">
+<img src="https://github.com/lemony452/fine-dust-notification/assets/109330624/679a4806-9924-43ff-b685-5d17c3cae0f3""
+>
+</p>
