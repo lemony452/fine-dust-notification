@@ -34,6 +34,4 @@
 
 ### 5. 어플리케이션 화면
 
-<p align="center">
-<img src="https://github.com/lemony452/fine-dust-notification/assets/109330624/6abdcfcf-19ed-4e3b-9f20-91c2775a1c83.gif" />
-</p>
+<img width="70%" src="https://github.com/lemony452/fine-dust-notification/assets/109330624/6abdcfcf-19ed-4e3b-9f20-91c2775a1c83.gif" />
